@@ -10,4 +10,12 @@ function convertNumber(num) {
       // Convertir a hexadecimal
       return num.toString(16);
     }
-  }
+}
+
+function miNombre() {
+    return {
+      nombre: 'Jaime Gold',
+      edad: 22,
+      nacionalidad: 'Peru'
+    };
+}
