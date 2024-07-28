@@ -7,7 +7,17 @@ function laCajaDePandora(numero) {
         return numero.toString(16);
     }
 }
+// Ejemplos de uso:
+console.log(laCajaDePandora(10)); // Output: "1010" (binario)
+console.log(laCajaDePandora(15)); // Output: "f" (hexadecimal)
 
-// Ejemplos de uso
-console.log(laCajaDePandora(4)); // "100" (4 en binario)
-console.log(laCajaDePandora(7)); // "7" (7 en hexadecimal)
+function crearObjetoConDatos() {
+    return {
+        nombre: "Gustavo",
+        edad: "23",
+        nacionalidad: "Col"
+    };
+}
+
+// Ejemplo de uso:
+console.log(crearObjetoConDatos());
