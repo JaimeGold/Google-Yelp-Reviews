@@ -1,0 +1,9 @@
+functions-framework
+pandas
+pyarrow
+numpy
+google-cloud-storage
+google-cloud-bigquery
+google-cloud-functions
+fsspec
+gcsfs
