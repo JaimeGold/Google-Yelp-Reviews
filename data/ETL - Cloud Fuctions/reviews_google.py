@@ -3,7 +3,13 @@ from google.cloud import bigquery, storage
 
 #Esta funcion asemeja a la función main 
 def transform(event, context):
-
+    """
+    Obtenemos la ruta del bucket y el nombre del archivo de entrada, y lo descargamos al directorio temporal. Luego, cargamos el contenido del archivo .pkl en un DataFrame de pandas. Luego, lo procesamos y lo cargamos en BigQuery.
+    
+    Args:
+        event (dict): Contiene la ruta del bucket y el nombre del archivo de entrada.
+        context (google.cloud.functions.Context): Objeto de contexto de Google Cloud Functions.
+    """
     # Obtenemos la ruta
     bucket_name = event["bucket"]
     file_name = event["name"]
@@ -60,7 +66,14 @@ def etl_process(bucket_name, file_name):
 
 
 def load_byquery(df, bucket, name):
-
+    """
+    Cargamos el DataFrame en BigQuery creando el dataset si no existe.
+    
+    Args:
+        df (DataFrame): DataFrame a cargar.
+        bucket (str): Nombre del bucket donde se encuentra el archivo .json.
+        name (str): Nombre del archivo .json. 
+    """
     # Cliente de bigquery
     client = bigquery.Client()
 
@@ -100,6 +113,14 @@ def load_byquery(df, bucket, name):
     remove_duplicates(client, dataset_id, 'reviews_google')
 
 def remove_duplicates(client, dataset_id, table_name):
+    """
+    Elimina registros duplicados de una tabla de BigQuery con una consulta SQL.
+    
+    Args:
+        client (bigquery.Client): Objeto de cliente de BigQuery.
+        dataset_id (str): ID del dataset.
+        table_name (str): Nombre de la tabla.
+    """
     # Nombre de la tabla temporal
     temp_table_id = f'{dataset_id}.temp_{table_name}'
 
